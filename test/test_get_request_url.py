@@ -1,7 +1,7 @@
 import requests_mock
 
 from kexr.kexr import get_request_url, request_exchange
-from test.const import resp_json
+from test.const import resp_json_exch
 
 
 def test_get_request_url():
@@ -12,6 +12,6 @@ def test_get_request_url():
 def test_request_exchange():
     req_url = get_request_url(key="11", search_date="20180103")
     with requests_mock.mock() as m:
-        m.get(req_url, text=resp_json, status_code=200)
+        m.get(req_url, text=resp_json_exch, status_code=200)
         r = request_exchange("11", "20180103")
     assert '1,326' == [i['kftc_bkpr'] for i in r if i['cur_unit'] == "EUR"][0]

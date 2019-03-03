@@ -1,6 +1,9 @@
 import json
 
-resp_json = json.dumps([{'bkpr': '290',
+resp_json_no_exch = json.dumps([])
+
+resp_json_exch = json.dumps(
+    [{'bkpr': '290',
       'cur_nm': '아랍에미리트 디르함',
       'cur_unit': 'AED',
       'deal_bas_r': '290.95',

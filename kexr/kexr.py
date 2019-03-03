@@ -14,4 +14,5 @@ def request_exchange(key, search_date):
     else:
         return resp.json()
 
-
+# todo collect data for one year
+# date, currency, ratio is format
