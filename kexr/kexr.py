@@ -1,4 +1,12 @@
+import re
+
 import requests
+
+float_pattern = re.compile(r"([^0-9., ]+)")
+
+
+def remove_comma_in_float_string(i_str):
+    return None if tuple(float_pattern.findall(i_str)) else float(i_str.replace(",", "").strip())
 
 
 def get_request_url(key, search_date):
