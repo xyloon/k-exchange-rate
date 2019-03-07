@@ -1,4 +1,4 @@
-from kexr.kexr import remove_comma_in_float_string
+from kexr.lib import remove_comma_in_float_string
 
 
 def test_remove_comma_in_float_string_number_string():

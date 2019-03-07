@@ -1,6 +1,6 @@
 import json
 
-from kexr.kexr import resp_dict_converter
+from kexr.lib import resp_dict_converter
 from test.const import resp_json_exch
 
 

@@ -1,6 +1,6 @@
 import requests_mock
 
-from kexr.kexr import get_request_url, request_exchange
+from kexr.lib import get_request_url, request_exchange
 from test.const import resp_json_exch
 
 
