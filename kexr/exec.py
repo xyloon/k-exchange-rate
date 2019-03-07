@@ -33,8 +33,6 @@ def main():
         ("end_date", args.end_date, is_not_none)
     )
 
-    # 시작 날짜부터 끝 날짜까리 나열한다.
-    # DB에 해당자료가 들어가 있는지 확인하고 있으면 skip 한다.
     dbtype, dbfilename = (DBType.sqlite3, args.dbfile) if args.dbfile is not None else \
         (DBType.memory, None)
 
