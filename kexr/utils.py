@@ -1,8 +1,37 @@
 from datetime import date, timedelta
+from functools import reduce
 
 from sqlalchemy import create_engine, MetaData
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.orm import sessionmaker
+
+
+class ParameterChecker:
+    def __init__(self, initial_list=[]):
+        self.param_check_list = initial_list.copy()
+
+    def append(self, one_item):
+        self.param_check_list.append(one_item)
+
+    def check(self):
+        checked_paramsters = [(test_name, not not_test_method(param)) for test_name, param, not_test_method in
+            self.param_check_list]
+        for one_check in checked_paramsters:
+            if one_check[1]:
+                print("%s does not specified or exist" % one_check[0])
+        if reduce(lambda x, y: x or y, map(lambda z: z[1], checked_paramsters)):
+            return False
+        return True
+
+
+def parameter_check_with_condition(parser, *conditions):
+    have_to_check_parameters = ParameterChecker()
+    for one_condition in conditions:
+        if one_condition is not None:
+            have_to_check_parameters.append(one_condition)
+    if not have_to_check_parameters.check():
+        parser.print_help()
+        exit(0)
 
 
 class EnvStore:
